@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "base.html"%}
+  {% block body_block%}
+  <div class="panel panel-dangki">
+    <div class="form-title" data-reactid="44">ĐĂNG NHẬP</div>
+    <form data-reactid="45" method="POST">
+      {% csrf_token %}
+      <input type="username" name="username" placeholder="Nhập số tài khoản" class="form-control" required="" data-reactid="46">
+      <input type="password" name="password" placeholder="Nhập mật khẩu" class="form-control" required="" data-reactid="47">
+      <div class="form-group" data-reactid="48">
+        <button type="submit" class="btn dangki" data-reactid="49">ĐĂNG NHẬP</button>
+        <a href="{% url 'login_register:register'%}">
+        <button  type="button" class="btn success" data-reactid="59">Đăng ký</button></a>
+      </div>
+      
+      <div class="form-group group-2" data-reactid="55">
+        
+      </div>
+    </form>
+  </div>
+  <div class="panel panel-footer">
+    
+    <div class="row">
+      
+      <div class="row">
+        <div class="col-xs-2.5 col-sm-2.5 col-md-2.5 col-lg-2.5">
+          
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+
+
+
+  </div>
+  {% endblock %}
