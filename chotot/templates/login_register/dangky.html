@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends "base.html"%}
+  {% block body_block%}
+  <div class="panel panel-dangki">
+    <div class="form-title" data-reactid="44">ĐĂNG KÝ</div>
+    <form data-reactid="45" method="POST" enctype='multipart/form-data'>
+      {% csrf_token %}
+      {{user_form.as_p}}
+      {{profile_form.as_p}}
+      <!-- <input type="phone" placeholder="Nhập số điện thoại" class="form-control" required="" data-reactid="46">
+      <input type="password" placeholder="Nhập mật khẩu" class="form-control" required="" data-reactid="47"> -->
+      <div class="form-group" data-reactid="48">
+        <button type="submit" class="btn dangki" data-reactid="49">ĐĂNG KÝ</button>
+      </div>
+      <div data-reactid="50" class="chu-dangki">
+        Bấm vào đăng ký nghĩa là bạn đã đọc và đồng ý với
+        <a href="#" data-reactid="52"> Điều khoản sử dụng của Chợ Tốt </a>
+        <hr>
+        <!-- Ở bước tiếp theo bạn sẽ nhận được mã xác nhận số điện thoại
+        <p class="dangki">gửi qua SMS</p> -->
+        <div class="form-separator"><span class="hoac">hoặc</span></div>
+      </div>
+      <p class="dangki">Bạn đã có tài khoản <a href="{% url 'login_register:login'%}">Đăng nhập</a></p>
+    </form>
+  </div>
+
+  <div class="panel panel-footer">
+    
+    <div class="row">
+      
+      <div class="row">
+        <div class="col-xs-2.5 col-sm-2.5 col-md-2.5 col-lg-2.5">
+          
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+  {% endblock %}

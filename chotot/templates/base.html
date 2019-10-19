@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    {%load staticfiles%}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title> Speed Shopping</title>
+        <link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
+        <link rel="stylesheet" href="{% static "css/text.css"%}">
+        <link rel="stylesheet" href="{% static "css/dangtin.css"%}">
+        <link rel="stylesheet" href="{% static "css/text.css"%}">
+        <link rel="stylesheet" href="{% static "css/inspector.css"%}">
+        <link rel="stylesheet" href="{% static "css/dangki.css"%}">
+        <link rel="stylesheet" href="{% static "css/timraovat.css"%}">
+        <link rel="stylesheet" href="{% static "css/css.css"%}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    </head>
+<body>
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                        <li><a class="navbar-brand" href="{% url 'main:index'%}"><img class="image-logo" src="{% static "images/chotot.png"%}" alt="" srcset="" width="auto" height="20e"></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'main:search'%}">Tìm rao vặt</a></li>
+                        <li><a href="{% url 'post:profile_post'%}">Tôi bán</a></li>
+                        <li><a href="{% url 'login_register:profile'%}">Người dùng</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout'%}">Đăng Xuất</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login_register:login'%}">Đăng Nhập</a></li>
+                        {% endif %}
+                        <li>
+                        <div class="button">
+                            <a href="{% url 'post:dangtin'%}"><button style="
+                                margin-top: 10px;
+                            " type="button" class="btn btn-warning">ĐĂNG TIN</button></a>
+                        </div>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    {% block body_block%}
+    {% endblock %}
+</body>
+</html>
