@@ -224,3 +224,6 @@ body{
 button.btn.btn-warning {
   margin-top: 5px;
 }
+.text-color{
+  color: rgb(252, 246, 246) !important;
+}
