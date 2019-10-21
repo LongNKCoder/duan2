@@ -76,7 +76,7 @@ body {
 }
 
 Span {
-  color      : #fff !important;
+  /* color      : #fff !important; */
   font-family: ;
   font-size  : 15px;
 }
@@ -223,4 +223,7 @@ body{
 }
 button.btn.btn-warning {
   margin-top: 5px;
+}
+.text-color{
+  color: rgb(252, 246, 246) !important;
 }

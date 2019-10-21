@@ -224,9 +224,11 @@ body{
 button.btn.btn-warning {
   margin-top: 5px;
 }
-.image-logo{
-  width: 3cm;
-  height: 1cm;
+.image-logo {
+  margin-left: 140px;
+  width: 2cm !important;
+  height: 30px !important;
+  margin-top: -4px;
 }
 .opacity {
   width: 440px !important;
@@ -235,4 +237,7 @@ button.btn.btn-warning {
   margin-top: 20px;
   width: 300px;
   height: 80px;
+}
+.img-minuscule{
+  width: auto;
 }
