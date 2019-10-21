@@ -4,8 +4,11 @@ from django.views.generic import View,TemplateView
 class IndexView(TemplateView):
     template_name = 'main/trangchu.html'
 
-    # def get_context_data(self,**kwargs):
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        model = 0
+        context["model"] = model
+        return context
 
 def search(request):
     return render (request, 'main/timraovat.html')
