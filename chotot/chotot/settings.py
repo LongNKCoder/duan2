@@ -26,8 +26,8 @@ SECRET_KEY = 'cn%#7f2*8-@b#-c5-_s7+f*1-#ph4y-$31z2ifcg$qvb2dn%4d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 LOGIN_URL = '/users/login'
-# LOGIN_REDIRECT_URL = '/login_register/login' 
-# LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/timraovat'
+LOGOUT_REDIRECT_URL = '/'
 ALLOWED_HOSTS = ['0.0.0.0','127.0.0.1']
 
 
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.template.context_processors.media',
             ],
         },
     },

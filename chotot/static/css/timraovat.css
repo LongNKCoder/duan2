@@ -1,15 +1,7 @@
 
 .panel.panel-default {
-  
-}
-.panel.panel-defaultt {
-  margin-left: 200px !important;
-  height: auto !important;
-  width: 950px;
-  left: 15000px !important;
-  height: 150px;
-  margin: 0px;
-  margin-left: 130px;
+  margin-left: 200px;
+  height: auto;
 }
 .col-xs-12 {
   position: relative;

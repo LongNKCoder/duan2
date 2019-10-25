@@ -5,13 +5,21 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse,HttpResponseRedirect
 from login_register.models import Profile
 from login_register.forms import ProfileForm,UserForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from main import views as main_views
-from django.views.generic import View,TemplateView
+from django.views.generic import View,TemplateView,DetailView
+from . import models
 
-def profile(request):
-    user_list = Profile.objects.order_by('user')
-    user_dict = {'users':user_list}
-    return render(request,'login_register/thongtin.html',context=user_dict)
+
+class ProfileView(DetailView):
+    context_object_name = 'nguoidung'
+    model = models.Profile
+    template_name = 'login_register/thongtin.html'
+
+class CurrentProfileView(LoginRequiredMixin, ProfileView):
+    context_object_name = 'nguoidung'
+    def get_object(self):
+        return self.request.user
 
 def register_view(request):
     registered = False
@@ -35,23 +43,3 @@ def register_view(request):
         user_form = UserForm()
         profile_form = ProfileForm()
     return render(request,'login_register/dangky.html',{'user_form':user_form,'profile_form':profile_form,'registered':registered})
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username,password=password)
-        if user:
-            if user.is_active:
-                login(request,user)
-                return main_views.search(request)
-            else:
-                return HttpResponse('Tài khoản chưa được active')
-        else:
-            return HttpResponse('Sai mật khẩu hoặc tài khoản')
-    else:
-        return render(request,'login_register/dangnhap.html')
-@login_required
-def user_logout(request):
-    logout(request)
-    return main_views.index(request)

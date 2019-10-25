@@ -10,5 +10,5 @@ class IndexView(TemplateView):
         context["model"] = model
         return context
 
-def search(request):
-    return render (request, 'main/timraovat.html')
+# class SearchView(TemplateView):
+#     template_name = 'main/timraovat.html'
