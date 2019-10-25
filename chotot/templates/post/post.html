@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends "base.html"%}
+{%load staticfiles%}
+{%load custom_filter%}
+{% block style%}
+<link rel="stylesheet" href="{% static "css/timraovat.css"%}">
+<link rel="stylesheet" href="{% static "css/text.css"%}">
+<link rel="stylesheet" href="{% static "css/dangki.css"%}">
+<link rel="stylesheet" href="{% static "css/dangtin.css"%}">
+<script src="{% static "js/text.js"%}"></script>
+{% endblock %}
+{% block body_block%}
+  <div>
+    <div class="_36tG76896bvCZ9jTEqerrE">
+      <div class="_3OM1ogaI9EXK1udHCHiMUc">
+        <div class="container">
+          <div class="">
+            <!--  -->
+            <div class="text-center"><strong>ĐĂNG TIN</strong></div>
+            <div class="clearfix"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container wXl5RTamVUQpIsQLT-GCD">
+      <!-- react-empty: 57 -->
+      <form class="">
+        <div class="form-group"><label class="">Tiêu đề</label>
+          <input type="tel" placeholder="Nhập tiêu đề" class="form-control" width="880px">
+
+          <div class="row">
+            <div class="col-lg-9 col-md-9 col-xs-9">
+              <p class="_1TkWBizW-SW-UOdQ0aDlU- _1Cr51TGneUrXdoQYH_5wX0">Điền tiêu đề để thu hút nhiều lượt xem tin
+                hơn.</p>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-3">
+              <p class="_1TkWBizW-SW-UOdQ0aDlU- _3XcOt4G-qTiQi2Fd9ClzBk"></p>
+            </div>
+          </div>
+          <div class="alert alert-danger text-danger alert-list _3AS_dooJ_vRQSyg_oSPA62">
+            <ul>
+              <li>Vui lòng điền tiêu đề</li>
+            </ul>
+          </div>
+
+        </div>
+        </form>
+        <div class="panel-images">
+            <div><label class="">Hình ảnh</label>
+          <div class="col-xs-12 _1leuGpQP7fsY3XCp-3eNDZ">
+            
+
+              <div class="_3wLdyQ1JXeAenU3yteGpQI"><button type="button" class="btn btn-brand btn-large"><i
+                    class="fa fa-camera fa-4x"></i><i>+</i></button></div>
+            </div><input type="file" accept="image/*" multiple="" style="display: none;">
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlTextarea2">Mô tả</label>
+            <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="2"></textarea>
+          </div>
+        </div>
+        <div class="category">
+          <form class="">
+            <div class="form-group">
+              <label for="sel1">Category</label>
+              <select class="form-control" id="sel1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+              <br>
+            </div>
+          </form>
+          <form class="">
+            <div class="form-group">
+              <label for="sel1">Brand</label>
+              <select class="form-control" id="sel1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+              <br>
+            </div>
+          </form>
+        </div>
+
+
+        <div class="form-group"><label class="">Gía</label>
+          <input type="tel" placeholder="Nhập giá" class="form-control" width="880px">
+        </div>
+    </div>
+    <div class="footer navbar-fixed-bottom formFooter ">
+      <div class="container">
+        <div class="btn-group btn-group-justified"><a class="btn btn-lg btn-primary btn-primary-customized"
+            type="submit"><span style="vertical-align: middle;">TIẾP TỤC</span>
+            <!-- /react-text --><span class="" style="vertical-align: middle;"></span></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

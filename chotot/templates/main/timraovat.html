@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 {% extends "base.html"%}
+{%load staticfiles%}
+{% block style%}
+<link rel="stylesheet" href="{% static "css/timraovat.css"%}">
+<link rel="stylesheet" href="{% static "css/text.css"%}">
+<script src="{% static "js/text.js"%}"></script>
+{% endblock %}
   {% block body_block%}
-  {%load staticfiles%}
-  <div class="panel panel-defaultt">
+  <div class="panel panel-default">
     <div class="container">
       <header>
         <div id="rgpt-2" data-google-query-id="">
@@ -42,7 +47,7 @@
                     <span>
 
                       <button class="btn btn-default btn-lg col-xs-5 _aa" id="myBtn">
-                        <span itemprop="name" class="toanquoc">Toàn quốc</span>
+                        <span itemprop="name" class="toanquoc">Thương hiệu</span>
                         <span class="caret"></span>
                       </button>
                     </span>
@@ -63,27 +68,15 @@
               </div>
 
             </div>
-            <div class="_2VtCeQFva4vDdq1vxSystR">
-              <div class="JLDv2VhpsbIe3Woa8Sz-4 pull-left">
-                <a href="#">
-                  <div class="_3agAuhZeViymWQeAM8KHUH _1KyWU4B3TxOhyU1dypwjAi"><span>Tất cả</span></div>
-                </a>
-                <a href="#">
-                  <div class="_3agAuhZeViymWQeAM8KHUH"><span>Cá nhân</span></div>
-                </a>
-                <a href="#">
-                  <div class="_3agAuhZeViymWQeAM8KHUH"><span>Bán chuyên</span></div>
-                </a>
-              </div>
-            </div>
+            
             <div class="pgjTolSNq4-L--tpQ7Xp5">
               <!-- mở div đăng tin -->
               <div class="ctStickyAdsListing">
                 <h3 class="ctAdListingTitle">
                   <li class="ctAdListingWrapper listView"><a rel="nofollow" class="ctAdListingItem" action="push"
-                      href="#">
-                      <div class="ctAdLitingThumbnail"><img alt="The Summit Building Đà Nẵng, /m2/tháng"
-                          class="lazyload thumbnailImageListing" src="images/nhabinhtan.jpg">
+                      href="tinchitiet.html">
+                      <div class="ctAdLitingThumbnail"> <img alt="The Summit Building Đà Nẵng, /m2/tháng"
+                          class="lazyload thumbnailImageListing" src="images/nhabinhtan.jpg"> 
                       </div>
                       <div class="ctAdListingBody">
                         <h3 class="ctAdListingTitle">1050 Quận Bình Tân 15m² </h3>
@@ -407,75 +400,20 @@
           <span class="close">&times;</span>
           <div class="" role="document">
             <div class="_btnkhuvuc">
-              <h4 class="text-center _khuvuc">Chọn khu vực</h4>
+              <h4 class="text-center _khuvuc">Chọn thương hiệu</h4>
             </div>
             <div class="modal-custom">
               <div class="custom">
                 <ul>
-                  <li class="li_item"><a class="a_item" href="#"><span>Toàn quốc</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Tp Hồ Chí Minh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hà Nội</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Đà Nẵng</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Cần Thơ</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bình Dương</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>An Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bà Rịa - Vũng Tàu</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bắc Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bắc Kạn</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bạc Liêu</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bắc Ninh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bến Tre</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bình Định</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bình Phước</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Bình Thuận</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Cà Mau</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Cao Bằng</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Đắk Lắk</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Đắk Nông</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Điện Biên</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Đồng Nai</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Đồng Tháp</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Gia Lai</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hà Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hà Nam</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hà Tĩnh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hải Dương</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hải Phòng</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hậu Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hòa Bình</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Hưng Yên</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Khánh Hòa</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Kiên Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Kon Tum</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Lai Châu</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Lâm Đồng</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Lạng Sơn</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Lào Cai</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Long An</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Nam Định</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Nghệ An</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Ninh Bình</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Ninh Thuận</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Phú Thọ</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Phú Yên</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Quảng Bình</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Quảng Nam</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Quảng Ngãi</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Quảng Ninh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Quảng Trị</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Sóc Trăng</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Sơn La</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Tây Ninh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Thái Bình</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Thái Nguyên</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Thanh Hóa</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Thừa Thiên Huế</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Tiền Giang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Trà Vinh</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Tuyên Quang</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Vĩnh Long</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Vĩnh Phúc</span></a></li>
-                  <li class="li_item"><a class="a_item" href="#"><span>Yên Bái</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>DELL</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>Lenovo</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>HP</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>Acer</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>Asus</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>Apple</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>MSI</span></a></li>
+                  <li class="li_item"><a class="a_item" href="#"><span>SamSung</span></a></li>
+                  
                 </ul>
               </div>
             </div>
@@ -524,13 +462,7 @@
                   <div class="beOGQJ" id="mainContainer">
                     <div>
                       <section class="jFeEPo">
-                        <div>
-                          <h2 class="evZOfP"></h2>
-                          <ul name="general.giveaway" class="list-group">
-                            <li class="list-group-item"><label class="eMotUx"><span>Cho tặng miễn phí</span></label>
-                            </li>
-                          </ul>
-                        </div>
+                    
                         <div>
                           <h2 class="evZOfP">Sắp xếp theo</h2>
                           <ul class="list-group">
@@ -538,13 +470,7 @@
                             <li class="list-group-item"><label class="eMotUx"><span>Gía thấp trước</span></label></li>
                           </ul>
                         </div>
-                        <div>
-                          <h2 class="evZOfP">Đăng bởi</h2>
-                          <ul class="list-group">
-                            <li class="list-group-item"><label class="eMotUx"><span>Cá nhân</span></label></li>
-                            <li class="list-group-item"><label class="eMotUx"><span>Bán chuyên</span></label></li>
-                          </ul>
-                        </div>
+                   
                         <div>
                           <h2 class="evZOfP">Bạn muốn</h2>
                           <ul class="list-group">
@@ -564,7 +490,7 @@
           </div>
         </div>
       </div> <!-- đóng container  -->
-    </div><!--  -->
-  </div>
-<script src="{% static "js/test.js"%}"></script>
+    </div>
+  </div><!--  -->
+  <script src="{% static "js/text.js"%}"></script>
 {% endblock %}
