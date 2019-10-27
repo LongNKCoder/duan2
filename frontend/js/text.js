@@ -53,3 +53,7 @@ window.onclick = function(event) {
     modalll.style.display = "none";
   }
 }
+var myWindow;
+function closeWin() {
+  myWindow.close();
+}
