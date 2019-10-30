@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 {% extends "base.html"%}
 {%load staticfiles%}
-{%load custom_filter%}
+{% load humanize %}
 {% block style%}
 <link rel="stylesheet" href="{% static "css/timraovat.css"%}">
 <link rel="stylesheet" href="{% static "css/text.css"%}">
@@ -23,7 +23,7 @@
           <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
             <div class="col-xs-12 adItemOfferWrapper">
               <div class="AdItem__PriceWrapper-iSokgh cEWkgd"><span class="oRSYZ0HPb2tHhHjpVp_2o"><span itemprop="price"
-                    content="{{post.price}}">{{post.price|currency}}</span>
+                    content="{{post.price}}">{{post.price|intcomma}}</span>
                 </span></div>
             </div>
           </div>
@@ -37,10 +37,28 @@
               </div><button class="_1dXXKqNPtKCzamS4970HOR H-oUrdggDsF88tJCNUOZ7"><i class="fa fa-angle-right"
                   aria-hidden="true"></i></button>
             </div>
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true" style="">
-              <div class="pswp__bg"></div>
-              <div class="post_slideshow">
-                <img src="{{post.images.all.0.pic.url}}" alt="" height="500px" width="570px">
+            <div class="pswp">
+              <div class="pswp__bg">
+                <div class="pswp__scroll-wrap">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                      {% for image in post.images.all%}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                      {% endfor %}
+                    </ol>
+                    <div class="carousel-inner">
+                      <div class="item active">
+                        <img class="img-carousel" src="{{post.images.all.0.pic.url}}">
+                      </div>
+                      {% for image in post.images.all|slice:"1:"%}
+                      <div class="item">
+                        <img class="img-carousel" src="{{image.pic.url}}">
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -96,8 +114,7 @@
             <div class="" style="">
               <div class="_3mb4oCiyoOiRy41U3DhZcs">
                 <div class="styles__UserProfileInfoWrapper-fAdrVE jQEbod"><a
-                    class="styles__ProfileWrapper-dPhSlC bWGbBK"
-                    href="{% url 'login_register:profile' post.user.id%}"
+                    class="styles__ProfileWrapper-dPhSlC bWGbBK" href="{% url 'login_register:profile' post.user.id%}"
                     target="_blank">
                     <div class="img-thumbnail img-circle _3r1LxPzm9N9CZVK8hYBlze _38Q-ZJPwiUyqL82cU4XpN6 "></div>
                     <div class="styles__NameBounder-fVrffo fqYgiV">
@@ -108,7 +125,8 @@
                           trang</button>
                       </div>
                       <div class="styles__StatusOnlineDiv-EFyjL ijoFhp"><span
-                          class="styles__OnlineBullet-dVkMwj VeeSf">•</span> Lần cuối đăng nhập: {{post.user.last_login|timesince}} trước
+                          class="styles__OnlineBullet-dVkMwj VeeSf">•</span> Lần cuối đăng nhập:
+                        {{post.user.last_login|timesince}} trước
                       </div>
                     </div>
                   </a>
@@ -140,6 +158,16 @@
                             VỚI NGƯỜI BÁN</span></div>
                       </a></div>
                   </div>
+                  {% if post.user == user%}
+                  <div>
+                    <div class="sc-cIShpX drOAqa"><a class="sc-kafWEX dbdoNV" href="{% url 'post:capnhat' pk=post.pk%}"
+                        target="_blank">
+                        <div class="sc-feJyhm ccHAWL"><span><img class="sc-iELTvK fjYNlE"
+                              src="https://static.chotot.com.vn/storage/chotot-icons/png/chat_green.png"></span><span>Sửa
+                            bài viết</span></div>
+                      </a></div>
+                  </div>
+                  {% endif %}
                   <div class="_1qSLCB8OdSh-qqBU-8hsY9 _2yFnwriywXbN31B7bl3L4 text-muted small">
                     <div class="col-xs-12 margin-top-10">
                       <div>

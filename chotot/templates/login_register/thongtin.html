@@ -1,6 +1,6 @@
 {% extends "base.html"%}
 {%load staticfiles%}
-{%load custom_filter%}
+{% load humanize %}
 {% block style%}
 <link rel="stylesheet" href="{% static "css/tinchitiet.css"%}">
 <link rel="stylesheet" href="{% static "css/timraovat.css"%}">
@@ -58,7 +58,7 @@
     <div class="indexPage PaperContainer">
       <div class="PaperWrapper"
         style="color:rgba(0, 0, 0, 0.87);background-color:#ffffff;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;box-sizing:border-box;font-family:Verdana, Arial, sans-serif;-webkit-tap-highlight-color:rgba(0,0,0,0);box-shadow:0 1px 2px rgba(0,0,0,.1);border-radius:2px">
-        <h4 class="TitleHeading">Đang bán <span>- {{nguoidung.post.all|length}}</span></h4>
+        <h4 class="TitleHeading">Đang bán</h4>
         <div class="row list">
           <div style="padding:8px 0px 8px 0px;width:100%">
             <div class="notfound">
@@ -75,6 +75,7 @@
 
               {% else %}
               {% for post in nguoidung.post.all%}
+              {% if post.state == "open"%}
               <div class="pgjTolSNq4-L--tpQ7Xp5">
                 <div class="ctStickyAdsListing">
                   <h3 class="ctAdListingTitle">
@@ -89,7 +90,7 @@
                     ">
                           <h3 class="ctAdListingTitle">{{post.title}}</h3>
                           <div class="ctAdListingUpperBody"><span class="ctAdListingPrice">
-                              <span class="adPriceMobile320">{{post.price|currency}}</span></span>
+                              <span class="adPriceMobile320">{{post.price|intcomma}}</span></span>
                           </div>
                           <div class="cMFlmw">
                             <div class="adItemType">
@@ -104,6 +105,7 @@
                     </li>
                 </div>
               </div>
+              {% endif %}
               {% endfor %}
               <div><a tabindex="0" href="https://www.chotot.com/dangtin"
                   style="border: 1px solid rgb(254, 153, 0); box-sizing: border-box; display: inline-block; font-family: Verdana, Arial, sans-serif; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer; text-decoration: none; margin: 0px 0px 10px; padding: 0px; outline: none; font-size: inherit; font-weight: inherit; position: relative; vertical-align: middle; height: 36px; line-height: 30px; min-width: 100%; color: rgba(0, 0, 0, 0.87); transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; border-radius: 3px; user-select: none; overflow: hidden; background-color: rgba(0, 0, 0, 0); text-align: center;">

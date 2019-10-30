@@ -4,7 +4,7 @@
     width      : 450px !important; 
     height     : auto;
     margin     : 10px;
-    margin-left: 400px;
+    margin-left: 440px;
   }
 }
 @media screen and (max-width: 992px) {
@@ -41,6 +41,18 @@
   width: 420px !important; 
   padding: 15px !important;
   margin:10px !important;
+}
+.btn.dangki{
+ 
+    display: block;
+    font-weight: 700;
+    background: #fc9827;
+    font-size: 14px;
+    width: 10px;
+    color: #fff;
+    width: 420px !important; 
+    margin-left: 10px;
+    margin-bottom: 10px !important;
 }
 .chu-dangki{
   /* padding: 10px; */
@@ -162,17 +174,17 @@ font-weight: 700;
     margin-left: 10px;
     margin-bottom: 5px !important;
 }
-.btn.dangki{
+.btn.success{
  
   display: block;
-  font-weight: 700;
-  background: #fc9827;
+  margin-top: 0px;
+  background:#33a837;
   font-size: 14px;
   width: 10px;
-  color: #fff;
-  width: 420px !important; 
-  margin-left: 10px;
-  margin-bottom: 10px !important;
+  color: white;
+  width: 200px !important; 
+  margin-left: 230px;
+  margin-bottom: 5px !important;
 }
 .nav>li>a>img {
   max-width: none;

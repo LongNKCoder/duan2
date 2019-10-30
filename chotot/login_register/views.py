@@ -2,18 +2,24 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse,HttpResponseRedirect
 from login_register.models import Profile
 from login_register.forms import ProfileForm,UserForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from main import views as main_views
 from django.views.generic import View,TemplateView,DetailView
+from django.contrib.auth.models import User
 from . import models
 
 
+class LoginViewCus(LoginView):
+    def form_valid(self,form):
+        return super().form_valid(form)
+
 class ProfileView(DetailView):
     context_object_name = 'nguoidung'
-    model = models.Profile
+    model = User
     template_name = 'login_register/thongtin.html'
 
 class CurrentProfileView(LoginRequiredMixin, ProfileView):
@@ -30,7 +36,6 @@ def register_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-
             profile = profile_form.save(commit=False)
             profile.user = user
             if 'pic' in request.FILES:

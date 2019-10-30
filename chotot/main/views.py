@@ -9,6 +9,3 @@ class IndexView(TemplateView):
         model = 0
         context["model"] = model
         return context
-
-# class SearchView(TemplateView):
-#     template_name = 'main/timraovat.html'
