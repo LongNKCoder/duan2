@@ -43,3 +43,18 @@ class Image(models.Model):
     pic = models.ImageField(upload_to='post/pic', blank=False)
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+REPORT_CHOICES = (
+    ('sensitive','Nội dung nhạy cảm'),
+    ('scam','Lừa đảo'),
+    ('duplicate','Trùng lặp'),
+    ('sale','Hàng đã bán'),
+    ('real','Thông tin không giống thực tế'),
+    ('none','Khác'),
+)
+class ReportPost(models.Model):
+    post = models.ForeignKey(Post,on_delete = models.CASCADE, related_name='report',)
+    pic = models.ImageField(upload_to='post/report', blank=False)
+    content = models.TextField()
+    type_report = models.CharField(max_length=10, choices=REPORT_CHOICES, default='none')

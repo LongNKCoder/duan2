@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-from .models import  Post,Image
+from .models import  Post,Image,ReportPost
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -17,3 +17,9 @@ class PostFormUpdate(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['state','title','price']
+
+class ReportForm(forms.ModelForm):
+    class Meta:
+        model = ReportPost
+        fields = ['post','pic','content','type_report']
+        widgets = {'post': forms.HiddenInput()}
