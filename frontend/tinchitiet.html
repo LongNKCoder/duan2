@@ -383,13 +383,13 @@
       <!-- /react-text -->
     </article>
   </main>
-  <div id="myModal" class="modal">
+  <div id="myModal" class="modal" tabindex="-1">
 
     <!-- Modal content -->
     <div>
       
       <div class="modal-content" role="document">
-          <button type="button" class="close" onclick="closeWin()">
+          <button type="button" class="close" onclick="closeWin()" data-dismiss="modal">
             <span aria-hidden="true">×</span></button>
         <div class="modal-header">
           <h4 class="modal-title">Người dùng này có vấn đề gì?</h4>
@@ -423,7 +423,7 @@
       </div>
     </div>
   </div>
-  <div id="myModall" class="modal">
+  <div id="myModall" class="modal" tabindex="-1">
     <div>
       <span class="close">&times;</span>
       <div class="modal-content" role="document">

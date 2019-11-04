@@ -5,6 +5,7 @@ from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    pic = models.ImageField(upload_to='post/category', blank=False, default='post/category/default.jpg')
     def __str__(self):
         return self.name
 
@@ -28,7 +29,7 @@ class Post(models.Model):
     create_date = models.DateTimeField(default = now, editable = False)
     update_date = models.DateTimeField(default = now)
     price = models.IntegerField()
-    state = models.CharField(max_length=6, choices=STATE_CHOICES, default='open')
+    state = models.CharField(max_length=6, choices=STATE_CHOICES, default='close')
     type_post = models.CharField(max_length=6, choices=TYPE_CHOICES, default='ban')
     user = models.ForeignKey(User,on_delete = models.CASCADE, related_name='post')
     category = models.ForeignKey(Category,on_delete = models.CASCADE)
@@ -58,3 +59,8 @@ class ReportPost(models.Model):
     pic = models.ImageField(upload_to='post/report', blank=False)
     content = models.TextField()
     type_report = models.CharField(max_length=10, choices=REPORT_CHOICES, default='none')
+    create_date = models.DateTimeField(default = now, editable = False)
+    def admin_thumbnail(self):
+        return u'<img src="%s" />' % (self.pic.url)
+    admin_thumbnail.short_description = 'Thumbnail'
+    admin_thumbnail.allow_tags = True

@@ -8,10 +8,9 @@ from login_register.models import Profile
 from login_register.forms import ProfileForm,UserForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from main import views as main_views
-from django.views.generic import View,TemplateView,DetailView
+from django.views.generic import View,TemplateView,DetailView,UpdateView
 from django.contrib.auth.models import User
 from . import models
-
 
 class LoginViewCus(LoginView):
     def form_valid(self,form):

@@ -38,7 +38,6 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError("Password bạn nhập chưa đúng")
 
 class ProfileForm(forms.ModelForm):
-
     class Meta:
         model = Profile
         fields = ('phone','pic')

@@ -90,7 +90,7 @@
               <h3 class="ctAdListingTitle">
                 <li class="ctAdListingWrapper listView"><a rel="nofollow" class="ctAdListingItem" action="push"
                     href="{% url 'post:baitinchitiet' post.id %}">
-                    <div class="ctAdLitingThumbnail"> <img alt="The Summit Building Đà Nẵng, /m2/tháng"
+                    <div class="ctAdLitingThumbnail"> <img alt="{{post.name}}"
                         class="lazyload thumbnailImageListing" src="{{post.images.all.0.pic.url}}">
                     </div>
                     <div class="ctAdListingBody">
