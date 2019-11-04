@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 {%load staticfiles%}
-
+{% load humanize %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> Speed Shopping</title>
-    <link rel="stylesheet" href="{% static "css/bootstrap.css"%}">
-    <link rel="stylesheet" href="{% static "css/text.css"%}">
-    <link rel="stylesheet" href="{% static "css/dangtin.css"%}">
-    <link rel="stylesheet" href="{% static "css/text.css"%}">
-    <link rel="stylesheet" href="{% static "css/inspector.css"%}">
-    <link rel="stylesheet" href="{% static "css/dangki.css"%}">
-    <link rel="stylesheet" href="{% static "css/timraovat.css"%}">
-    <link rel="stylesheet" href="{% static "css/trangchu.css"%}">
+    <link rel="stylesheet" href="{% static "css/base.css"%}">
+    {% block style%}
+    {% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -24,16 +19,20 @@
     <nav class="navbar" role="navigation">
         <div class="container">
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="navbar-nav">
-                    <a class="navbar-brand" href="{% url 'main:index'%}">
-                            <img class="image-logo" src="{% static "images/chotot.png"%}" alt="" srcset="" width="auto"
-                                height="20e">
+                <ul class="nav navbar-nav">
+                    <li class="navbar-nav">
+                        <a href="{% url 'main:index'%}" style="
+                        padding-right: 0px;
+                        padding-left: 0px;
+                        padding-bottom: 5%;
+                        padding-top: 5%;">
+                            <img src="{% static "images/chotot.png"%}" alt="" border="0" srcset="" width="auto" height="35px">
                         </a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{% url 'main:search'%}">Tìm rao vặt</a></li>
-                    <li><a href="{% url 'post:profile_post'%}">Tôi bán</a></li>
-                    <li><a href="{% url 'login_register:profile'%}">Người dùng</a></li>
+                    <li><a href="{% url 'login_register:current'%}">Người dùng</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout'%}">Đăng Xuất</a></li>
                     {% else %}

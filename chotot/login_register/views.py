@@ -2,16 +2,29 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.views import LoginView
 from django.http import HttpResponse,HttpResponseRedirect
 from login_register.models import Profile
 from login_register.forms import ProfileForm,UserForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from main import views as main_views
-from django.views.generic import View,TemplateView
+from django.views.generic import View,TemplateView,DetailView,UpdateView
+from django.contrib.auth.models import User
+from . import models
 
-def profile(request):
-    user_list = Profile.objects.order_by('user')
-    user_dict = {'users':user_list}
-    return render(request,'login_register/thongtin.html',context=user_dict)
+class LoginViewCus(LoginView):
+    def form_valid(self,form):
+        return super().form_valid(form)
+
+class ProfileView(DetailView):
+    context_object_name = 'nguoidung'
+    model = User
+    template_name = 'login_register/thongtin.html'
+
+class CurrentProfileView(LoginRequiredMixin, ProfileView):
+    context_object_name = 'nguoidung'
+    def get_object(self):
+        return self.request.user
 
 def register_view(request):
     registered = False
@@ -22,7 +35,6 @@ def register_view(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-
             profile = profile_form.save(commit=False)
             profile.user = user
             if 'pic' in request.FILES:
@@ -35,23 +47,3 @@ def register_view(request):
         user_form = UserForm()
         profile_form = ProfileForm()
     return render(request,'login_register/dangky.html',{'user_form':user_form,'profile_form':profile_form,'registered':registered})
-
-def user_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username,password=password)
-        if user:
-            if user.is_active:
-                login(request,user)
-                return main_views.search(request)
-            else:
-                return HttpResponse('Tài khoản chưa được active')
-        else:
-            return HttpResponse('Sai mật khẩu hoặc tài khoản')
-    else:
-        return render(request,'login_register/dangnhap.html')
-@login_required
-def user_logout(request):
-    logout(request)
-    return main_views.index(request)

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 {% extends "base.html"%}
+{%load staticfiles%}
+{% block style%}
+<!-- <link rel="stylesheet" href="{% static "css/text.css"%}"> -->
+<!-- <link rel="stylesheet" href="{% static "css/bootstrap.css"%}"> -->
+{% endblock %}
   {% block body_block%}
-  {%load staticfiles%}
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <div class="carousel">
@@ -49,125 +53,22 @@
           </div>
         </div> <!-- đóng col-->
         <!-- đây là bắt đầu đổ dữ liệu category -->
-        <div class="panel panel-small">
+        <div iv class="panel panel-small">
+          <br>
           <h1 class="danhmuc">Khám phá danh mục</h1>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          {% for categ in category%}
+          <a href="/timraovat?category={{categ.id}}">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
             <div class="panel-images">
               <div class="minuscule">
-                <a href="http://"><Span>Bất động sản</Span></a>
+                <Span class="category" style="color: black;">{{categ.name}}</Span>
               </div>
-
-              <img data-src="" alt="" class="opacity" src= "{% static "images/cho-tot-nha.png"%}" width="440px" height="150px">
-
+              <img data-src="" alt="" class="opacity img-minuscule" style="opacity: 80%;" src= "{{ categ.pic.url }}"  width="200px" height="110px">
             </div>
           </div>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="panel-images">
-              <div class="minuscule">
-                <a href="#" ><Span>Xe cộ</Span></a>
-              </div>
-              <img data-src="" class="opacity" alt="" src= "{% static "images/cho-tot-xe.png"%}" width="440px" height="150px">
-            </div>
-
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="" ><Span>Đồ điện tử </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/6.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Việc làm </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/13.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Thú cưng </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/12.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Đồ ngoại thất, Đồ gia dụng </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/11.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Mẹ và bé </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/10.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span> Giải trí, Thể thao, Sở thích </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/9.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Thời trang, đồ dùng cá nhân </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/8.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Đồ văn phòng, Công nông nghiệp </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/7.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Dịch vụ, Du lịch </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/dich-vu-du-lich.png"%}">
-            </div>
-          </div>
-
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Các loại khác </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/cac-loai-khac.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Cho tặng miễn phí</Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/cho-tang-mien-phi.png"%}">
-            </div>
-          </div>
-          <div class="col-xs-5ths">
-            <div class="panel-images-minuscule">
-              <div class="minuscule">
-                <a href="http://"><Span>Tất cả danh mục </Span></a>
-              </div>
-              <img class="img-minuscule" data-src="#" alt="" src="{% static "images/cac-loai-khac.png"%}">
-            </div>
-          </div>
+          {% endfor %}
         </div>
+      </a>
         <!-- đây là kết thúc đổ dữ liệu category -->
       </div> <!-- đóng container-->
     </div> <!-- đóng col ngoài-->

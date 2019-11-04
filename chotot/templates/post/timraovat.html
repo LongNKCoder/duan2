@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% extends "base.html"%}
+{%load staticfiles%}
+{% load humanize %}
+{% block style%}
+<link rel="stylesheet" href="{% static "css/timraovat.css"%}">
+<link rel="stylesheet" href="{% static "css/text.css"%}">
+<script src="{% static "js/text.js"%}"></script>
+{% endblock %}
+{% block body_block%}
+<div class="panel panel-default">
+  <div class="container">
+    <header>
+      <div id="rgpt-2" data-google-query-id="">
+        <div>
+          <img class="img-buyer" src="images/GamingCreator_Static1.2_728x90.png" alt="" width="750px" height="100px">
+        </div>
+      </div>
+      <div>
+        <h1 itemprop="name" class="muaban"> <strong>Mua bán, rao vặt nhanh chóng, uy tín tại Speeding Shopping Toàn
+            quốc</strong> </h1>
+      </div>
+    </header>
+
+    <main>
+      <div class="row no-margin">
+        <div class="col-md-8">
+          <form method="GET">
+            <div class=" hrSofa">
+              <input type="text" name="title" class="daymOP" autocomplete="off" placeholder="Tìm kiếm trên Chợ Tốt..." value="{{ request.GET.title }}">
+            </div>
+            <div class="row _3p">
+              <div class="col-xs-12 undefined">
+                <div class="row">
+                  <div class=" col-xs-12">
+                    <div class="col-xs-5 _aa">
+                      <span itemprop="name" class="toanquoc">Thương hiệu</span>
+                      <select class="form-control" name="brand">
+                          <option value=""></option>
+                        {% for brand in brand%}
+                        <option value="{{brand.id}}">{{brand.name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-xs-4 _aa">
+                      <span itemprop="name" class="toanquoc">Thời gian</span>
+                      <select class="form-control" name="time">
+                        <option value=""></option>
+                        <option value="-update_date">Mới nhất</option>
+                        <option value="update_date">Trễ nhất</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-3 _aa">
+                      <span itemprop="name" class="toanquoc">Bạn muốn</span>
+                      <select class="form-control" name="type" default="">
+                        <option value=""></option>
+                        <option value="mua">Mua</option>
+                        <option value="ban">Bán</option>
+                      </select>
+                    </div>
+                    <div class="col-xs-5 _aa">
+                      <span itemprop="name" class="toanquoc">Tất cả danh mục</span>
+                      <select class="form-control" name="category">
+                        <option value=""></option>
+                        {% for categ in category%}
+                        <option value="{{categ.id}}">{{categ.name}}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-xs-7 _aa">
+                      <span itemprop="name" class="toanquoc">Giá</span>
+                      <select class="form-control" name="price">
+                        <option value=""></option>
+                        <option value="price">Từ thấp đến cao</option>
+                        <option value="-price">Từ cao đến thấp</option>
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <input class="button" type="submit" value="Tìm kiếm">
+          </form>
+          {% for post in posts%}
+          {% if post.state == "open" and post.user.is_active%}
+          <div class="pgjTolSNq4-L--tpQ7Xp5">
+            <!-- mở div đăng tin -->
+            <div class="ctStickyAdsListing">
+              <h3 class="ctAdListingTitle">
+                <li class="ctAdListingWrapper listView"><a rel="nofollow" class="ctAdListingItem" action="push"
+                    href="{% url 'post:baitinchitiet' post.id %}">
+                    <div class="ctAdLitingThumbnail"> <img alt="{{post.name}}"
+                        class="lazyload thumbnailImageListing" src="{{post.images.all.0.pic.url}}">
+                    </div>
+                    <div class="ctAdListingBody">
+                      <h3 class="ctAdListingTitle">{{post.title}}</h3>
+                      <div class="ctAdListingUpperBody"><span class="ctAdListingPrice">
+                          <span class="adPriceMobile320">{{post.price|intcomma}} đ</span></span>
+                      </div>
+                      <div class="cMFlmw">
+                        <div class="adItemType">
+                          <div class="cMFlmw"><i class="stickyAdIcon"></i><span>{{post.user.username}}</span></div><span
+                            class="delimeter"></span>
+                          <div class="cMFlmw"><i class="stickyAdIcon"></i><span>Bài viết được đăng cách đây
+                              {{post.create_date|timesince}}</span>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          {% if is_paginated %}
+          <div class="pagination">
+            <span class="page-links">
+              {% if page_obj.has_previous %}
+              <a href="/timraovat?page={{ page_obj.previous_page_number }}">previous</a>
+              {% endif %}
+              <span class="page-current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+              <a href="/timraovat?page={{ page_obj.next_page_number }}">next</a>
+              {% endif %}
+            </span>
+          </div>
+          {% endif %}
+        </div> <!-- đóng col 8 -->
+
+
+        <div class="col-md-4">
+          <img src="images/sdk.png" alt="" width="300px">
+          <img src="images/qc1.gif" alt="">
+        </div> <!-- đóng col  4 -->
+      </div>
+    </main> <!-- đóng thẻ main -->
+  </div>
+</div><!--  -->
+<script src="{% static "js/text.js"%}"></script>
+{% endblock %}

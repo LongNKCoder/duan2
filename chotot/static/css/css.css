@@ -76,7 +76,7 @@ body {
 }
 
 Span {
-  color      : #fff !important;
+  /* color      : #fff !important; */
   font-family: ;
   font-size  : 15px;
 }
@@ -224,20 +224,6 @@ body{
 button.btn.btn-warning {
   margin-top: 5px;
 }
-.image-logo {
-  margin-left: 140px;
-  width: 2cm !important;
-  height: 30px !important;
-  margin-top: -4px;
-}
-.opacity {
-  width: 440px !important;
-}
-.img-banner {
-  margin-top: 20px;
-  width: 300px;
-  height: 80px;
-}
-.img-minuscule{
-  width: auto;
+.text-color{
+  color: rgb(252, 246, 246) !important;
 }
