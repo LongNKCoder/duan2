@@ -13,15 +13,13 @@
       <input type="password" name="password" placeholder="Nhập mật khẩu" class="form-control" required="" data-reactid="47">
       <div class="form-group" data-reactid="48">
         <button type="submit" class="btn dangki" data-reactid="49">ĐĂNG NHẬP</button>
-        <button type="button" class="btn quenmatkhau">Quên mật khẩu?</button>
+        <a href="{% url 'login_register:reset'%}">
+          <button type="button" class="btn quenmatkhau">Quên mật khẩu?</button>
+        </a>
         <a href="{% url 'login_register:register'%}">
             <button  type="button" class="btn dangki" data-reactid="59">Đăng ký</button>
+        </a>
       </div>
     </form>
   </div>
-  {% if thongbao%}
-  <script>
-    alert('{{thongbao}}')
-    </script>
-  {% endif %}
   {% endblock %}

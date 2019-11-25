@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
                     <li class="navbar-nav">
-                        <a href="{% url 'main:index'%}" style="
+                        <a href="{% url 'index'%}" style="
                         padding-right: 0px;
                         padding-left: 0px;
                         padding-bottom: 5%;
@@ -31,7 +31,7 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'main:search'%}">Tìm rao vặt</a></li>
+                    <li><a href="{% url 'search'%}">Tìm rao vặt</a></li>
                     <li><a href="{% url 'login_register:current'%}">Người dùng</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'logout'%}">Đăng Xuất</a></li>

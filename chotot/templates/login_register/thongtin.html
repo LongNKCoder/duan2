@@ -11,7 +11,7 @@
   <div class="container WrapperContainer">
     <div class="breadcrumWrapper">
       <ul class="sc-jzJRlG cIiMVT">
-        <li class="sc-cSHVUG jbltJC"><a href="{% url 'main:index'%}"" class=" sc-kAzzGY eZQMkE">Chợ Tốt</a></li>
+        <li class="sc-cSHVUG jbltJC"><a href="{% url 'index'%}"" class=" sc-kAzzGY eZQMkE">Chợ Tốt</a></li>
         <li class="sc-cSHVUG jbltJC"><a class="sc-kAzzGY llFQGq">Trang cá nhân của {{nguoidung.username}}</a></li>
       </ul>
     </div>
@@ -90,7 +90,7 @@
                     ">
                           <h3 class="ctAdListingTitle">{{post.title}}</h3>
                           <div class="ctAdListingUpperBody"><span class="ctAdListingPrice">
-                              <span class="adPriceMobile320">{{post.price|intcomma}}</span></span>
+                              <span class="adPriceMobile320">{{post.price|intcomma}} đ</span></span>
                           </div>
                           <div class="cMFlmw">
                             <div class="adItemType">

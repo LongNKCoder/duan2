@@ -5,10 +5,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from . import models,form
+from PIL import Image
 
 @login_required()
 def post(request):
     return render(request, 'post/dangtin.html')
+
+class IndexView(ListView):
+    model = models.Category
+    context_object_name = 'category'
+    template_name = 'main/trangchu.html'
 
 class PostListView(ListView):
     context_object_name = 'posts'
@@ -23,8 +29,8 @@ class PostListView(ListView):
         filter_category = self.request.GET.get('category') or ''
         filter_price = self.request.GET.get('price') or 'price'
         new_context = models.Post.objects.filter(
-            title__contains=filter_title,category__id__contains=filter_category,
-            brand__id__contains=filter_brand,type_post__contains=filter_type
+            title__contains=filter_title,category__name__contains=filter_category,
+            brand__name__contains=filter_brand,type_post__contains=filter_type
         ).order_by(filter_price,filter_time)
         return new_context
     def get_context_data(self, **kwargs):
@@ -43,8 +49,7 @@ class CreatePostView(LoginRequiredMixin,CreateView):
             self.object = form.save(commit=False)
             self.object.user = self.request.user
             self.object.save()
-            for f in files:
-                pic = f
+            for pic in files:
                 photo = models.Image(post=self.object, pic=pic)
                 photo.save()
             return super().form_valid(form)

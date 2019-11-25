@@ -2,6 +2,7 @@
 {% extends "base.html"%}
 {%load staticfiles%}
 {% load humanize %}
+{% load my_tags %}
 {% block style%}
 <link rel="stylesheet" href="{% static "css/timraovat.css"%}">
 <link rel="stylesheet" href="{% static "css/text.css"%}">
@@ -38,7 +39,7 @@
                       <select class="form-control" name="brand">
                           <option value=""></option>
                         {% for brand in brand%}
-                        <option value="{{brand.id}}">{{brand.name}}</option>
+                        <option value="{{brand.name}}">{{brand.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -63,7 +64,7 @@
                       <select class="form-control" name="category">
                         <option value=""></option>
                         {% for categ in category%}
-                        <option value="{{categ.id}}">{{categ.name}}</option>
+                        <option value="{{categ.name}}">{{categ.name}}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -115,21 +116,26 @@
           </div>
           {% endif %}
           {% endfor %}
-          {% if is_paginated %}
-          <div class="pagination">
-            <span class="page-links">
-              {% if page_obj.has_previous %}
-              <a href="/timraovat?page={{ page_obj.previous_page_number }}">previous</a>
+          <div style="text-align: center;">
+            {% if is_paginated %}
+            {% if page_obj.has_previous %}
+              <a href="/timraovat?{% param_replace page=1 %}">First</a>
+              {% if page_obj.previous_page_number != 1 %}
+                <a href="?{% param_replace page=page_obj.previous_page_number %}">Previous</a>
               {% endif %}
-              <span class="page-current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-              </span>
-              {% if page_obj.has_next %}
-              <a href="/timraovat?page={{ page_obj.next_page_number }}">next</a>
+            {% endif %}
+
+          Page {{ page_obj.number }} of {{ paginator.num_pages }}
+
+            {% if page_obj.has_next %}
+              {% if page_obj.next_page_number != paginator.num_pages %}
+                <a href="/timraovat?{% param_replace page=page_obj.next_page_number %}">Next</a>
               {% endif %}
-            </span>
+              <a href="/timraovat?{% param_replace page=paginator.num_pages %}">Last</a>
+            {% endif %}
+          <!-- <p>Objects {{ page_obj.start_index }}—{{ page_obj.end_index }}</p> -->
+            {% endif %}
           </div>
-          {% endif %}
         </div> <!-- đóng col 8 -->
 
 

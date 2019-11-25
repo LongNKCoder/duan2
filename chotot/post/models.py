@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
 from django.urls import reverse
+from PIL import Image
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -18,6 +19,7 @@ TYPE_CHOICES = (
     ('mua','Mua'),
     ('ban', 'Bán')
 )
+
 STATE_CHOICES = (
     ('open','Mở'),
     ('close','Đóng')
@@ -45,7 +47,6 @@ class Image(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-
 REPORT_CHOICES = (
     ('sensitive','Nội dung nhạy cảm'),
     ('scam','Lừa đảo'),
@@ -54,13 +55,10 @@ REPORT_CHOICES = (
     ('real','Thông tin không giống thực tế'),
     ('none','Khác'),
 )
+
 class ReportPost(models.Model):
     post = models.ForeignKey(Post,on_delete = models.CASCADE, related_name='report',)
     pic = models.ImageField(upload_to='post/report', blank=False)
     content = models.TextField()
     type_report = models.CharField(max_length=10, choices=REPORT_CHOICES, default='none')
     create_date = models.DateTimeField(default = now, editable = False)
-    def admin_thumbnail(self):
-        return u'<img src="%s" />' % (self.pic.url)
-    admin_thumbnail.short_description = 'Thumbnail'
-    admin_thumbnail.allow_tags = True
