@@ -44,3 +44,29 @@ class ProfileForm(forms.ModelForm):
         widgets = {
             'phone': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+class UpdateUserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    re_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    class Meta:
+        model = User
+        fields = ('password','re_password','first_name','last_name')
+        widgets = {
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            're_password': forms.PasswordInput(attrs={'class': 'form-control'}),
+        }
+    def clean(self):
+        all_clean_data = super().clean()
+        password = all_clean_data['password']
+        re_password = all_clean_data['re_password']
+
+        if password != re_password :
+            raise forms.ValidationError("Password bạn nhập chưa đúng")
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('address','pic')
+        widgets = {
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+        }
