@@ -1,11 +1,8 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
-from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView,FormView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib import messages
 from . import models,form
-from PIL import Image
 
 @login_required()
 def post(request):
@@ -24,14 +21,14 @@ class PostListView(ListView):
     def get_queryset(self):
         filter_title = self.request.GET.get('title') or ''
         filter_brand = self.request.GET.get('brand') or ''
-        filter_time = self.request.GET.get('time') or 'update_date'
+        filter_time = self.request.GET.get('time') or ''
         filter_type = self.request.GET.get('type') or ''
         filter_category = self.request.GET.get('category') or ''
-        filter_price = self.request.GET.get('price') or 'price'
+        order_by = self.request.GET.get('order_by') or '?'
         new_context = models.Post.objects.filter(
             title__contains=filter_title,category__name__contains=filter_category,
             brand__name__contains=filter_brand,type_post__contains=filter_type
-        ).order_by(filter_price,filter_time)
+        ).order_by(order_by)
         return new_context
     def get_context_data(self, **kwargs):
         context = super(PostListView, self).get_context_data(**kwargs)

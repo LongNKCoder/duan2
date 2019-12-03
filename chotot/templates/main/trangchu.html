@@ -33,6 +33,7 @@
 
       <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          {% if not user.is_authenticated %}
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
@@ -40,20 +41,20 @@
                   <img class="img-banner" src="{% static "images/sub-banner.png"%}" alt="">
                 </div>
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                  {% if not user.is_authenticated %}
                   <h4>Đăng nhập để không bỏ lỡ món hời giá tốt</h4>
                     <div class="buttone">
                       <a href="{% url 'login_register:login'%}"><button type="button" class="btn btn-warning">ĐĂNG NHẬP NGAY</button></a></div>
                     <div class="buttonee">
                       <a href="{% url 'login_register:register'%}">Đăng ký tài khoản</a></div>
-                  {% endif %}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+              {% endif %}
         </div> <!-- đóng col-->
         <!-- đây là bắt đầu đổ dữ liệu category -->
-        <div iv class="panel panel-small">
+        <div iv class="panel panel-small" style="
+        margin-top: 0px;">
           <br>
           <h1 class="danhmuc">Khám phá danh mục</h1>
           {% for categ in category%}

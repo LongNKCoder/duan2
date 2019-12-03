@@ -88,7 +88,7 @@
                 <div class="styles__UserProfileInfoWrapper-fAdrVE jQEbod"><a
                     class="styles__ProfileWrapper-dPhSlC bWGbBK" href="{% url 'login_register:profile' post.user.id%}"
                     target="_blank">
-                    <div class="img-thumbnail img-circle _3r1LxPzm9N9CZVK8hYBlze _38Q-ZJPwiUyqL82cU4XpN6 "></div>
+                      <img src="{{post.user.profile.pic.url}}" class="img-thumbnail img-circle _3r1LxPzm9N9CZVK8hYBlze _38Q-ZJPwiUyqL82cU4XpN6 ">
                     <div class="styles__NameBounder-fVrffo fqYgiV">
                       <div class="styles__FlexDiv-gecxmb juHLCK">
                         <div class="styles__NameDiv-fClOhj dzrPXg"><b>
@@ -161,9 +161,11 @@
                     <div class="btn-block _172F-2PuOv67wKHZRmWZv_">
                       <div class="sc-gisBJw ikcTlv">
                         <div class="sc-cHGsZl iTxwzU">
+                          {% if not user == post.user%}
                           <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
                             Báo cáo bài viết
                           </button>
+                          {% endif %}
                         </div>
                       </div>
                     </div>
