@@ -5,16 +5,21 @@ from . import models
 
 def make_open(modeladmin, request, queryset):
     queryset.update(state='open')
-make_open.short_description = "Mark selected stories as open"
+make_open.short_description = "Mark selected posts as open"
 def make_close(modeladmin, request, queryset):
     queryset.update(state='close')
-make_close.short_description = "Mark selected stories as close"
+make_close.short_description = "Mark selected posts as close"
 
 class PostAdmin(admin.ModelAdmin):
+    def show_post(self, obj):
+        return format_html("<a href='{url}'>"+str(obj.title)+"</a>", url='/post/'+str(obj.id))
+
+    show_post.short_description = "Link bài viết"
     list_filter = ['category','brand','type_post','state']
     search_fields = ['title', 'user__username']
-    list_display = ['title','user','create_date','state']
-    list_editable = ['state']
+    list_display = ['title','show_post','user','update_date','state']
+    list_editable = ['state','update_date']
+    readonly_fields = ('title','show_post','user','content','category','brand','type_post','price')
     actions = [make_open,make_close]
     list_per_page = 10
 
@@ -41,6 +46,5 @@ class ReportAdmin(admin.ModelAdmin):
 admin.site.register(models.Brand)
 admin.site.register(models.Category)
 admin.site.register(models.Post, PostAdmin)
-admin.site.register(models.Image)
 admin.site.register(models.ReportPost, ReportAdmin)
 # Register your models here.
